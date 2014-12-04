@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" >
+    <script src="http://codletech.net/CAF/core/caf.min.js"></script>
+    <!-- CSS Includes -->
+    <link rel="stylesheet" type="text/css" href="http://codletech.net/CAF/core/caf.min.css"/>
+    <title>Codletech Application Framework</title>
+</head>
+<body id="body" ontouchstart="" class="">
+</body>
+<!-- JS Includes -->
+<script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
+<script type="text/javascript" src="core/AppData.js"></script>
+<script type="text/javascript" src="core/Settings.js"></script>
+<script type="text/javascript">
+    CSettings.set('appID','548085bff3c4180200f93cf2');
+</script>
+<script type="text/javascript">
+    Caf.firstLoad = CLocalStorage.get(Caf.firstLoadKey);
+    if (CUtils.isEmpty(Caf.firstLoad))
+        Caf.firstLoad = true;
+
+    CAppHandler.start(function(){
+        CThreads.start(CAppUpdater.update);
+        CThreads.run(Caf.updatedCheck,300);
+    });
+
+</script>
