@@ -1,7 +1,7 @@
-<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="net.codletech.apps.at" version="234">
-  <name>את - מירית הרשקוביץ</name>
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="net.codletech.apps.tester" version="234">
+  <name>CAF - Tester App</name>
   <description></description>
-  <author href="https://www.facebook.com/atmirit" email="atmirit@gmail.com">Dvir Cohen</author>
+  <author href="http://codletech.net/" email="codletech@gmail.com">Dvir Cohen</author>
   <preference name="disallowOverscroll" value="true"/>
   <preference name="DisallowOverscroll" value="true"/>
   <preference name="webviewbounce" value="false"/>
