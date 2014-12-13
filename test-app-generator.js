@@ -30,6 +30,7 @@
             builder.addData('headerSize',70);
 
             builder.addData('navigation',[
+                {data: {showTime:600,color:CColor('BlueA',11),    icon:'add84',             text: 'התקשרו אלינו'  , link:'experiments'   } },
                 {data: {showTime:600,color:CColor('GreenH',11),    icon:'phone94',             text: 'התקשרו אלינו'  , phone: '#globals.business_info.phone'   } },
                 {data: {showTime:700,color:CColor('TealC',10),         icon:'dress1',             text: 'המוצרים שלנו',   link: 'categories'} },
                 {data: {showTime:800,color:CColor('PurpleH',11),  icon:'map65',               text: 'נווטו אלינו',    address: '#globals.business_info.address'} },
@@ -38,6 +39,7 @@
 
             ]);
             builder.addData('side-navigation',[
+                {data: {color:CColor('BlueA',11),    icon:'add84',             text: 'התקשרו אלינו'  , link:'experiments'   } },
                 {data: {color:CColor('PinkG',10),    icon:'home48',             link:'/'   } },
                 {data: {color:CColor('GreenH',11),    icon:'phone94',             text: 'התקשרו אלינו'  , phone: '#globals.business_info.phone'   } },
                 {data: {color:CColor('TealC',10),         icon:'dress1',             text: 'המוצרים שלנו',   link: 'categories'} },
@@ -96,12 +98,14 @@
                 .child('page-main')
                 .child('page-about')
                 .child('page-categories')
-                .child('page-products');
+                .child('page-products')
+                .child('page-experiments');
 
             BAppGenerator.createPageMain(builder);
             BAppGenerator.createPageAbout(builder);
             BAppGenerator.createPageCategories(builder);
             BAppGenerator.createPageProducts(builder);
+            BAppGenerator.createPageExperiments(builder);
 
             return builder.build();
         },
@@ -274,7 +278,7 @@
                 .openMailTo('#globals.business_info.mail').iconLeft('left46',34,CColor('TealC',10))
                 .iconRight('mail61',40,CColor('TealC',10),{ parents:['design-about-icon']})
                 .design({ parents:['design-about-value']});
-            builder.create('Button', 'page-about-value-codletech').text('פותח ע"י Codletech')
+            builder.create('Button', 'page-about-value-codletech').text('פותח ב-Codletech')
                 .link('http://codletech.net').iconLeft('left46',34,CColor('TealC',10))
                 .iconRight('cinch',40,CColor('TealC',10),{ parents:['design-about-icon']})
                 .design({ parents:['design-about-value']});
@@ -372,6 +376,48 @@
                                 .shareImage('#.data.name','#.data.name','#.data.image')
                         ])
                 );
+
+        },
+        createPageExperiments: function (builder) {
+            builder.create('Page', 'page-experiments')
+                .page('experiments', '#.data.name')
+                .child('page-experiments-label');
+            builder.create('Container', 'page-experiments-label')
+                .cohtml('<div co-childs="([\'page-experiments-ionic-show-dialog\'])">' +
+                    '<strong class="w80 hp50 bgBlueA8" co-onClick="(function(){alert(\'hi\');})" co-text="s@Click to Alert" ' +
+                        'co-icon="p@[\'airplane54\',34,\'right\',CColor(\'BlueB\',10)]"></strong>' +
+                    ' Sample Text '+
+                    '<div style="background:#dddddd;width:400px;height:80px;" co-text="s@Move To About" co-link="s@about"></div>'+
+                    '<div co-design="({parents:[\'page-main-button\'],width:\'80%\',height:50,bgColor:CColor(\'BrownC\',8)})" co-backButton="" >Move Back</div>'+
+                    '<strong class="w80 hp50 bgBlueA8" co-onClick="(function(){alert(\'hi\');})" co-text="s@Click to Alert"></strong>' +
+                    ' Sample Text '+
+                    '<div style="background:#dddddd;width:400px;height:80px;" co-text="s@Move To About" co-link="s@about"></div>'+
+                    '<div co-design="({parents:[\'page-main-button\'],width:\'80%\',height:50,bgColor:CColor(\'BrownC\',8)})" co-backButton="" >Move Back</div>'+
+                    '</div>')
+                .design({
+                    width: '95%', maxWidth:450, color: CColor('Gray', 16),
+                    textAlign:'center', margin:'centered',
+                    marginTop:5, fontSize:18,lineHeight: 30
+                });
+            builder.create('Button', 'page-experiments-ionic-show-dialog')
+                .text('Show Dialog').design({parents:['page-main-button'],width:'80%',height:50,bgColor:CColor('BrownC',8)})
+                .onClick(function(){
+                    $ionicActionSheet.show({
+                        buttons: [
+                            { text: '<b>Share</b> This' },
+                            { text: 'Move' }
+                        ],
+                        destructiveText: 'Delete',
+                        titleText: 'Modify your album',
+                        cancelText: 'Cancel',
+                        cancel: function() {
+                            // add cancel code..
+                        },
+                        buttonClicked: function(index) {
+                            return true;
+                        }
+                    });
+                })
 
         }
 
