@@ -14,6 +14,7 @@
   <gap:plugin name="org.apache.cordova.inappbrowser"/>
   <gap:plugin name="com.phonegap.plugin.statusbar"/>
   <gap:plugin name="tr.bel.mamak.sms_plagin"/>
+  <gap:plugin name="com.phonegap.plugins.barcodescanner"/>
   <icon src="icon.png"/>
   <icon src="res/icon/android/icon-36-ldpi.png" gap:platform="android" gap:density="ldpi"/>
   <icon src="res/icon/android/icon-48-mdpi.png" gap:platform="android" gap:density="mdpi"/>
