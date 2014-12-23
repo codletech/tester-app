@@ -4,7 +4,7 @@
   <author href="http://codletech.net/" email="codletech@gmail.com">Dvir Cohen</author>
   <preference name="disallowOverscroll" value="true"/>
   <preference name="DisallowOverscroll" value="true"/>
-  <preference name="webviewbounce" value="false"/>
+  <preference name="webviewbounce" value="true"/>
   <gap:plugin name="org.apache.cordova.device"/>
   <gap:plugin name="org.apache.cordova.splashscreen"/>
   <gap:plugin name="nl.x-services.plugins.socialsharing"/>
