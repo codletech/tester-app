@@ -9,6 +9,7 @@
   <gap:plugin name="org.apache.cordova.splashscreen"/>
   <gap:plugin name="nl.x-services.plugins.socialsharing"/>
   <gap:plugin name="com.pushapps.phonegap"/>
+  <gap:plugin name="com.sharinglabs.cordova.plugin.datepicker"/>
   <gap:plugin name="com.ohh2ahh.plugins.appavailability"/>
   <gap:plugin name="de.appplant.cordova.plugin.email-composer"/>
   <gap:plugin name="org.apache.cordova.inappbrowser"/>
