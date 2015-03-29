@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" >
+    <!-- CSS Includes -->
+    <script src="http://dev.codletech.net/caf/core/caf.min.js"></script>
+    <!-- CSS Includes -->
+    <link rel="stylesheet" type="text/css" href="http://dev.codletech.net/caf/core/caf.min.css"/>
+    <link rel="stylesheet" type="text/css" href="http://dev.codletech.net/caf/core/icons/flaticon.css"/>
+<title>Codletech Application Framework</title>
+</head>
+<body id="body" ontouchstart="" class="">
+</body>
+<!-- JS Includes -->
+<script>
+    document.write('<script type="text/javascript" src="'+window.location.search.substring(5)+'"/>');
+    document.write('<'+'/script>');
+    function tryLoadApp(){
+        if (window.appIsLoaded)
+            return;
+        else if (window.app){
+            window.appIsLoaded = true;
+            Caf.actualStart();
+        }
+        else
+            CThreads.run(tryLoadApp,50);
+    };
+    tryLoadApp();
+</script>
+<script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
+</html>

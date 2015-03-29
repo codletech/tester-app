@@ -5,16 +5,73 @@
     <meta name="format-detection" content="telephone=no" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" >
     <!-- CSS Includes -->
-    <link rel="stylesheet" type="text/css" href="http://codletech.net/CAF/core/icons/flaticon.css"/>
-    <link rel="stylesheet" type="text/css" href="http://codletech.net/CAF/core/caf.min.css"/>
-    <title>Codletech Application Framework</title>
+    <script src="http://dev.codletech.net/caf/core/caf.min.js"></script>
+    <script type="text/javascript" src="http://dev.codletech.net/caf/app-development/apps/negevist/compiled/app.js"></script>
+    <!-- CSS Includes -->
+    <link rel="stylesheet" type="text/css" href="http://dev.codletech.net/caf/core/caf.min.css"/>
+    <link rel="stylesheet" type="text/css" href="http://dev.codletech.net/caf/core/icons/flaticon.css"/>
+<title>Codletech Application Framework</title>
+    <style>
+        .app-header{
+            background: #004385;
+            color: #ffffff;
+        }
+        .button{
+            height: 60px;
+            line-height: 60px;
+            font-weight: bold;
+            color: #000000 !important;
+        }
+        .button.active{
+            background: #0050a0;
+            color: #ffffff !important;
+        }
+    </style>
 </head>
 <body id="body" ontouchstart="" class="">
 </body>
 <!-- JS Includes -->
-<script type="text/javascript" src="http://codletech.net/CAF/core/AppDataTester1.js"></script>
-<script src="http://codletech.net/CAF/core/caf.min.js"></script>
 <script>
-    Caf.start();
+var app = new CBuilderObjects();
+app.addData('footerSize',0);
+app.addData('headerSize',70);
+// Create the App Container - contains all the app objects (parent of MainView and SideMenu).
+app.create(CAppContainer,'app-container')
+        .child('main-view');
+// Create Main View - the view that contains the header,footer,content(pages).
+app.create(CMainView,'main-view')
+        .child('header').child('content');
+// Create Content - Add Pages here.
+app.create(CContent,'content')
+        .child('page-main');
+// Create Header.
+app.create(CHeader,'header')
+        .classes('app-header')
+        .mainHeader()
+        .headerTitleDesign({
+            fontSize: 18
+        })
+// Main Page
+app.create(CPage, 'page-main').page('','Apps Loader')
+        .children([
+                co(CTemplate,'template')
+                        .template('http://dev.codletech.net/caf/app-development/apps/apps.php',true)
+                        .templateObjects([
+                            co(CLink).text(dRow('name')).classes('button')
+                                    .href(dRow(function(scope){ return 'app.html?src='+encodeURI(scope.src);}))
+                        ])
+        ]);
+
+
+window.appData = app.build();
+window.appData.appID = window.appID;
+
+
+
+
+
+
+
+Caf.actualStart();
 </script>
-<script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
+<!--<script type="text/javascript" charset="utf-8" src="phonegap.js"></script>-->
