@@ -57,8 +57,11 @@ app.create(CPage, 'page-main').page('','Apps Loader')
                 co(CTemplate,'template')
                         .template('http://dev.codletech.net/caf/app-development/apps/apps.php',true)
                         .templateObjects([
-                            co(CLink).text(dRow('name')).classes('button')
-                                    .href(dRow(function(scope){ return 'app.html?src='+encodeURI(scope.src);}))
+                            co(CButton).text(dRow('name')).classes('button')
+                                    .onClick(function(){
+                                        window.location.href = 'app.html?src='+encodeURI(this.dvRow('src'));
+                                    })
+//                                    .href(dRow(function(scope){ return 'app.html?src='+encodeURI(scope.src);}))
                         ])
         ]);
 
