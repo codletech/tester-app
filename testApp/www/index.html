@@ -31,8 +31,8 @@
 </body>
 <!-- JS Includes -->
 <script>
-    if (!isEmpty(scopes.localStorage.get('currentAppSource'))){
-        var source = scopes.localStorage.get('currentAppSource');
+    if (true || !isEmpty(scopes.localStorage.get('currentAppSource'))){
+        var source = 'http://dev.codletech.net/caf/app-development/apps/negevist/compiled/app.js';//scopes.localStorage.get('currentAppSource');
         document.write('<script type="text/javascript" src="'+source+'"/>');
         document.write('<'+'/script>');
         scopes.localStorage.set('currentAppSource',null);
