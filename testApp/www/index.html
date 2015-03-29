@@ -31,25 +31,23 @@
 </body>
 <!-- JS Includes -->
 <script>
-    if (window.location.search.substring(5).length > 0) {
-        if (app && app.loaderApp === true) {
-            window.location.reload();
-        }
-        else {
-            document.write('<script type="text/javascript" src="'+window.location.search.substring(5)+'"/>');
-            document.write('<'+'/script>');
-            function tryLoadApp(){
-                if (window.appIsLoaded)
-                    return;
-                else if (window.app){
-                    window.appIsLoaded = true;
-                    Caf.actualStart();
-                }
-                else
-                    CThreads.run(tryLoadApp,50);
-            };
-            tryLoadApp();
-        }
+    if (!isEmpty(scopes.localStorage.get('currentAppSource'))){
+        var source = scopes.localStorage.get('currentAppSource');
+        document.write('<script type="text/javascript" src="'+source+'"/>');
+        document.write('<'+'/script>');
+        scopes.localStorage.set('currentAppSource',null);
+        function tryLoadApp(){
+            if (window.appIsLoaded)
+                return;
+            else if (window.app){
+                window.appIsLoaded = true;
+                Caf.actualStart();
+            }
+            else
+                CThreads.run(tryLoadApp,50);
+        };
+        tryLoadApp();
+
     }
     else {
         var app = new CBuilderObjects();
@@ -80,7 +78,8 @@
                             .templateObjects([
                                 co(CButton).text(dRow('name')).classes('button')
                                         .onClick(function(){
-                                            window.location.href += '?src='+encodeURI(this.dvRow('src'));
+                                            scopes.localStorage.set('currentAppSource',this.dvRow('src'));
+                                            window.location.reload();
                                         })
                                 //                                    .href(dRow(function(scope){ return 'app.html?src='+encodeURI(scope.src);}))
                             ])
