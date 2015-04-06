@@ -20,6 +20,8 @@
   <gap:plugin name="com.phonegap.plugins.barcodescanner"/>
   <gap:plugin name="com.pushwoosh.plugins.pushwoosh"/>
   <gap:plugin name="org.transistorsoft.cordova.background-geolocation"/>
+  <gap:plugin name="org.apache.cordova.geolocation" />
+	
   <icon src="icon.png"/>
   <icon src="res/icon/android/icon-36-ldpi.png" gap:platform="android" gap:density="ldpi"/>
   <icon src="res/icon/android/icon-48-mdpi.png" gap:platform="android" gap:density="mdpi"/>
@@ -42,4 +44,6 @@
   <gap:splash src="res/screen/ios/screen-ipad-portrait.png" gap:platform="ios" height="1024" width="768"/>
   <gap:splash src="res/screen/ios/screen-ipad-landscape.png" gap:platform="ios" height="768" width="1024"/>
   <access origin="*"/>
+  <access origin="https://cp.pushwoosh.com" subdomains="true" />
+
 </widget>
