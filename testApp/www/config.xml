@@ -19,8 +19,9 @@
   <gap:plugin name="tr.bel.mamak.sms_plagin"/>
   <gap:plugin name="com.phonegap.plugins.barcodescanner"/>
   <gap:plugin name="com.pushwoosh.plugins.pushwoosh"/>
-  <gap:plugin name="org.transistorsoft.cordova.background-geolocation"/>
+  <gap:plugin name="org.apache.cordova.dialogs" />
   <gap:plugin name="org.apache.cordova.geolocation" />
+  <gap:plugin name="org.transistorsoft.cordova.background-geolocation"/>
 	
   <icon src="icon.png"/>
   <icon src="res/icon/android/icon-36-ldpi.png" gap:platform="android" gap:density="ldpi"/>
